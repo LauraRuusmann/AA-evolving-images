@@ -26,17 +26,13 @@ if __name__ == "__main__":
     ap.add_argument('-path', default="images/")
     ap.add_argument('-file_name', default="img")
     ap.add_argument('-method', default="voronoi")
-
+    args = vars(ap.parse_args())
+    
     print("Method:", args["method"])
     print("Image:", args["img_name"])
     print("Points:", args["nr_points"])
     print("Polygons:", args["nr_poly"])
     print("Vertices:", args["nr_vertex"])
-
-
-    #nr_poly, nr_vertex
-
-    args = vars(ap.parse_args())
     
     method = args.pop("method")
     
