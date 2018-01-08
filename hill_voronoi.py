@@ -90,7 +90,12 @@ def voronoi_finite_polygons_2d(vor, radius=None):
             continue
 
         # reconstruct a non-finite region
-        ridges = all_ridges[p1]
+        if p1 in all_ridges:  # Check if key in dictionary (previously got error)
+            ridges = all_ridges[p1]
+        else:
+            continue
+        
+        
         new_region = [v for v in vertices if v >= 0]
 
         for p2, v1, v2 in ridges:
