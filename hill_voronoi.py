@@ -201,7 +201,7 @@ def show_img(size, dna, nr):
     new_img = gen_image_voronoi(size, np.split(dna, nr))
     plt.imshow(new_img)
     plt.show()
-    
+
 # Similar to show_img, but saves instead of showing
     # size - tuple - size of the image
     # dna - voronoi parameters for generating image
@@ -294,6 +294,10 @@ def hill_voronoi(img_name, nr_points, iter = 10, mut_rate = 0.05, mut_chance = 0
             print("Fit: ", fit)
             #show_img(size, dna_last, nr_points)
             save_img(size, dna_last, nr_points, file_name + "_" + str(i))
+        
+        if i % (save_every*10) == 0:
+            print("Dna:", dna)
+ 
             
     #show_img(size, dna_last, nr_points)
     save_img(size, dna_last, nr_points, file_name + "_" + str(i))
