@@ -296,7 +296,7 @@ def hill_voronoi(img_name, nr_points, iter = 10, mut_rate = 0.05, mut_chance = 0
             save_img(size, dna_last, nr_points, file_name + "_" + str(i))
         
         if i % (save_every*10) == 0:
-            print("Dna:", dna)
+            print("DNA:", ','.join(str(p) for p in dna_last) 
  
             
     #show_img(size, dna_last, nr_points)
