@@ -225,7 +225,7 @@ def ensure_bounds(vec, bounds):
         vec_new.append(polygon)
     return vec_new
 
-def differential_evolution(img_name, nr_points,popsize=50, iter=10, mutate=0.5, recombination=0.7):
+def differential_evolution(img_name, nr_points,popsize=50, iter=4000, mutate=0.5, recombination=0.7):
 
     # Load image
     img = Image.open(img_name).convert("RGB")
@@ -254,7 +254,7 @@ def differential_evolution(img_name, nr_points,popsize=50, iter=10, mutate=0.5, 
         # cycle through each individual in the population
         for j in range(0, popsize):
             # select three random vector index positions [0, popsize), not including current vector (j)
-            canidates = [*range(0, popsize)]
+            canidates = list(range(0,popsize)) #[*range(0, popsize)]
             canidates.remove(j)
             random_index = sample(canidates, 3)
 
@@ -301,20 +301,20 @@ def differential_evolution(img_name, nr_points,popsize=50, iter=10, mutate=0.5, 
         # gen_avg = sum(gen_scores) / popsize  # current generation avg. fitness
         # gen_best = min(gen_scores)  # fitness of best individual
         gen_sol = population[gen_scores.index(min(gen_scores))]  # solution of best individual
-        new_img = gen_image_voronoi(size, gen_sol)
+        #new_img = gen_image_voronoi(size, gen_sol)
         print(i)
-        plt.imshow(new_img)
-        plt.show()
+        #plt.imshow(new_img)
+        #plt.show()
 
 
     date = datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
 
-    outputfile = "voronoi-" + str(date) + "-" + str(img_name.split(".")[0]) + "-iter" + str(iter) + "-points" + str(nr_points) + ".png"
+    outputfile = "voronoi-" + str(date) + "-" + str(img_name.split("/")[2].split(".")[0]) + "-iter" + str(iter) + "-points" + str(nr_points) + ".png"
     outputimage = gen_image_voronoi(size, gen_sol)
     plt.imsave(outputfile, outputimage)
     #return gen_sol
 
 
-differential_evolution("darwin.PNG",10)
+differential_evolution("AA-evolving-images/images/darwin.PNG",75)
 
 

@@ -8,10 +8,11 @@ import PIL.ImageDraw as ImageDraw
 import PIL.Image as Image
 import random
 import sys
+from datetime import datetime
 
-nr_poly = 10
-nr_vertex = 3
-imagename = "mona_lisa.jpg"
+nr_poly = 150
+nr_vertex = 6
+imagename = "AA-evolving-images/images/starry.jpg"
 
 if len(sys.argv) > 1:
     imagename = str(sys.argv[1])
@@ -23,7 +24,7 @@ size = tuple(reversed(image.shape[:2]))  # W and H of image
 popsize = 50  # Population size, must be >= 4
 mutate = 0.5  # Mutation factor [0,2]
 recombination = 0.7  # Recombination rate [0,1]
-maxiter = 5  # Max number of generations (maxiter)
+maxiter = 10000  # Max number of generations (maxiter)
 
 
 # Calculates difference between two images. It done subtracting one image from another.
@@ -147,7 +148,6 @@ def differential_evolution(cost_func, bounds, popsize, mutate, recombination, ma
         indv = []
         for j in range(nr_poly):
             polygons = []
-            # todo - 14 should not be hardcoded
             for k in range(14):
                 polygons.append(random.randint(bounds[k][0], bounds[k][1]))
             indv.append(polygons)
@@ -204,9 +204,19 @@ def differential_evolution(cost_func, bounds, popsize, mutate, recombination, ma
         # gen_best = min(gen_scores)  # fitness of best individual
         gen_sol = population[gen_scores.index(min(gen_scores))]  # solution of best individual
         #new_img = gen_image_poly(size, gen_sol)
-        #print(i)
+        print(i)
         #plt.imshow(new_img)
         #plt.show()
+ 
+        if i%10 == 0:
+            global imagename
+            date = datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
+            imag = str(imagename.split("/")[2])
+
+            outputfile = "DE-"+str(date)+"-"+str(imag.split(".")[0])+"-vert"+str(nr_vertex)+"-iter"+str(i)+"-poly"+str(nr_poly)+".png"
+            outputimage = gen_image_poly(size, gen_sol)
+            plt.imsave(outputfile,outputimage)
+
 
     return gen_sol
 
@@ -218,8 +228,10 @@ cost_func = cost_poly  # Cost functioni sees võrreldakse originaalpildig
 
 a = differential_evolution(cost_func, bounds, popsize, mutate, recombination, maxiter, image, nr_poly)
 
-from datetime import datetime
+
 date = datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
+
+imagename = str(imagename.split("/")[2])
 
 outputfile = "DE-"+str(date)+"-"+str(imagename.split(".")[0])+"-vert"+str(nr_vertex)+"-iter"+str(maxiter)+"-poly"+str(nr_poly)+".png"
 outputimage = gen_image_poly(size, a)
