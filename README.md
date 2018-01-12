@@ -7,7 +7,7 @@ Optimization algorithms have been proven to be useful for many applications. In 
 
 ## Metaheuristic algorithms used
 
-We have used hill climibing and differential evolution algorithms for finding the best solutions. 
+We have used hill climbing and differential evolution algorithms for finding the best solutions. 
   
 Hill climbing is a local search algorithm. In this project one parameter was changed to random value at a time. After changing the value, the newly generated image was compared to original. If it was better than previous, it was kept, otherwise discarded.
   
