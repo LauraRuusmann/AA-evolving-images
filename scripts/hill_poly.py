@@ -175,7 +175,8 @@ def hill_poly(img_name, nr_poly = 100, nr_vertex = 6, iter = 10000, mut_rate = 0
             save_img(size, dna_last, nr_poly, file_name + "_" + str(i))
         
         if i % (save_every*10) == 0:
-            print("DNA:", ','.join(str(p) for p in dna_last))
+            pass
+            #print("DNA:", ','.join(str(p) for p in dna_last))
 
     
     

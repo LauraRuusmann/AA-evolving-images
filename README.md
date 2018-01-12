@@ -34,3 +34,12 @@ Examples of the results' progress can be seen [here](https://imgur.com/a/4lHuE) 
 ## Poster
 
 We have created a descriptive poster for our project which can be found [here](https://github.com/LauraRuusmann/AA-evolving-images/blob/master/poster.pdf).
+
+
+## Running the command line script
+
+For quick start with default parameters:
+python main_hill.py
+
+To get more information about parameters:
+python main_hill.py -h

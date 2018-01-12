@@ -1,7 +1,7 @@
 from __future__ import print_function
 
-from hill_voronoi import hill_voronoi
-from hill_poly import hill_poly
+from scripts.hill_voronoi import hill_voronoi
+from scripts.hill_poly import hill_poly
 
 import argparse
 import time
@@ -13,19 +13,19 @@ if __name__ == "__main__":
     
     # Parsing arguments for Hill climbing function
     ap = argparse.ArgumentParser()
-    ap.add_argument('-img_name', default='images/darwin.png')
-    ap.add_argument('-nr_points', type=int, default=100)
-    ap.add_argument('-nr_poly', type=int, default=100)
-    ap.add_argument('-nr_vertex', type=int, default=6)
+    ap.add_argument('-img_name', default='images/darwin.png', help="Path to original image")
+    ap.add_argument('-nr_points', type=int, default=200, help="Number of Voronoi points (method=voronoi)")
+    ap.add_argument('-nr_poly', type=int, default=200, help="Number of polygons (method=polygon)")
+    ap.add_argument('-nr_vertex', type=int, default=6, help="Number of vertices (method=polygon)")
 
-    ap.add_argument('-iter', type=int, default=10000)
-    ap.add_argument('-mut_rate', type=float, default=0.05)
-    ap.add_argument('-mut_chance', type=float, default=0.05)
-    ap.add_argument('-save_every', type=int, default=100)
-    ap.add_argument('-mut_random', type=bool, default=True)
-    ap.add_argument('-path', default="images/")
-    ap.add_argument('-file_name', default="img")
-    ap.add_argument('-method', default="voronoi")
+    ap.add_argument('-iter', type=int, default=30000, help="Number of iterations")
+    ap.add_argument('-mut_rate', type=float, default=0.05, help="Mutation speed, does not change over time.")
+    ap.add_argument('-mut_chance', type=float, default=0.05, help="Change of accepting worsening results.")
+    ap.add_argument('-save_every', type=int, default=100, help="Save result image after every i-th iteration.")
+    ap.add_argument('-mut_random', type=bool, default=True, help="Random mutations, if it's TRUE, then variable 'mut_rate' ignored.")
+    ap.add_argument('-path', default="res_image/", help="Path to folder, where results are saved")
+    ap.add_argument('-file_name', default="img", help="Name of result image files (currently only png format used)")
+    ap.add_argument('-method', default="polygon", help="Methods (styles) used: [voronoi,polygon]")
     args = vars(ap.parse_args())
     
     print("Method:", args["method"])
