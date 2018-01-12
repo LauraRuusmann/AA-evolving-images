@@ -38,8 +38,8 @@ We have created a descriptive poster for our project which can be found [here](h
 
 ## Running the command line script
 
-For quick start with default parameters:
-python main_hill.py
+For quick start with default parameters run:<br>
+<b>python main_hill.py</b>
 
-To get more information about parameters:
-python main_hill.py -h
+To get more information about parameters:<br>
+<b>python main_hill.py -h</b>
