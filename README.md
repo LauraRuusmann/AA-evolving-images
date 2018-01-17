@@ -35,6 +35,10 @@ Examples of the results' progress can be seen [here](https://imgur.com/a/4lHuE) 
 
 We have created a descriptive poster for our project which can be found [here](https://github.com/LauraRuusmann/AA-evolving-images/blob/master/poster.pdf).
 
+## Video (external link to youtube)
+
+[![Video with Evolving Images](https://img.youtube.com/vi/-t28zfXzp0c/0.jpg)](https://www.youtube.com/watch?v=-t28zfXzp0c)
+
 
 ## Running the command line script
 
